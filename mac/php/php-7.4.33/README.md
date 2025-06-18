@@ -178,8 +178,8 @@ echo """
 zend_extension=xdebug
 xdebug.mode=develop,debug
 
-xdebug.start_with_request=yes
-#xdebug.start_with_request=trigger
+#xdebug.start_with_request=yes
+xdebug.start_with_request=trigger
 xdebug.trigger_value=PHPSTORM
 xdebug.log_level=0
 
@@ -190,7 +190,6 @@ xdebug.var_display_max_depth=10
 xdebug.discover_client_host=true
 xdebug.client_host=mac.local
 xdebug.client_port=9003
-xdebug.idekey=PHPSTORM
 """ >> php.ini
 
 php -m | grep xdebug
@@ -209,5 +208,20 @@ composer -V
 composer --help
 composer config repo.packagist composer https://mirrors.aliyun.com/composer/
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+
+```
+
+#### 触发 XDEBUG
+```shell
+# web
+?XDEBUG_TRIGGER=PHPSTORM
+#或
+?XDEBUG_SESSION=PHPSTORM
+
+# cli
+export XDEBUG_TRIGGER=PHPSTORM
+#或
+export XDEBUG_SESSION=PHPSTORM
+php myscript.php
 
 ```
