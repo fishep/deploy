@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 RUN apt-get update
-RUN apt-get install -y git libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libbz2-dev libwebp-dev libxml2-dev
+RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libbz2-dev libwebp-dev libxml2-dev
 
 RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
 
