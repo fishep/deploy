@@ -11,6 +11,12 @@ flink run -c org.example.MyJob myFatJar.jar
 
 ````
 
+#### 配置
+```shell
+# 容器里的配置是动态生成的
+# 查看配置 conf/flink-conf.yaml ，配置到 docker-compose.yml 的环境变量去
+```
+
 #### 添加依赖
 ```shell
 docker cp mysql-connector-j-8.0.32.jar jobmanager:/opt/flink/lib
@@ -42,7 +48,7 @@ docker compose -p service up -d
 
 #### 启动 historyserver
 ```shell
-# 配置 flink-conf.yaml
+# 查看配置 conf/flink-conf.yaml ，配置到 docker-compose.yml 的环境变量去
 # HistoryServer
 
 # 启动 historyserver
