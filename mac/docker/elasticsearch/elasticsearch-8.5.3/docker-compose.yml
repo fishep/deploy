@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   elasticsearch:
-    container_name: es
+    container_name: elasticsearch
     image: elasticsearch:8.5.3
     environment:
       - discovery.type=single-node
