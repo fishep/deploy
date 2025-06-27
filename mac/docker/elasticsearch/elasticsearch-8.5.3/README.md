@@ -3,6 +3,8 @@
 
 #### elasticsearch
 ```shell
+docker compose -p elk up -d 
+
 docker compose -p service up -d 
 
 docker exec -it elasticsearch bash

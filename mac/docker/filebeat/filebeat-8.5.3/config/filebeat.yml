@@ -1,0 +1,34 @@
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: true
+
+processors:
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+
+# ============================== logstash =====================================
+output.logstash:
+  hosts: ["logstash:5044"]
+  enabled: true
+#============================== Kibana =====================================
+setup.kibana:
+  host: "kibana:5601"
+
+#============================== elasticsearch =====================================
+#output.elasticsearch:
+#  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
+#  username: '${ELASTICSEARCH_USERNAME:}'
+#  password: '${ELASTICSEARCH_PASSWORD:}'
+
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /usr/share/filebeat/log/*.log
+    tags: ["log"]
+    multiline:
+      pattern: ^[0-9]{4}
+      negate: true
+      match: after
+      timeout: 3s
