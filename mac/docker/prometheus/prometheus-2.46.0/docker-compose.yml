@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.46.0
+    user: root
+    volumes:
+      - ./etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./etc/prometheus/rules/:/etc/prometheus/rules/
+    ports:
+      - "9090:9090"
+
+  alertmanager:
+    container_name: alertmanager
+    image: prom/alertmanager:v0.25.0
+    volumes:
+      - ./etc/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+
+  node-exporter:
+    container_name: node-exporter
+    image: prom/node-exporter:v1.6.1
+    ports:
+      - "9100:9100"
