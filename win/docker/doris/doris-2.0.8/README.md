@@ -20,7 +20,7 @@ docker compose -p service up -d
 
 #### doris test
 ```shell
-docker cp ../test.csv doris:/root
+docker cp ./test.csv doris:/root
 
 docker exec -it doris bash
 
