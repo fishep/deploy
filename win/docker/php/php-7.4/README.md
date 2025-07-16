@@ -1,6 +1,14 @@
 # docker
 > 在docker部署php7.4
 
+#### 修改配置
+```shell
+
+# 修改 volumes 的路径映射
+vim docker-compose.yml
+
+```
+
 #### 部署php7.4
 ```shell
 

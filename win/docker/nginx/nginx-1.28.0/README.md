@@ -1,17 +1,27 @@
 # docker deploy nginx-1.28.0
 > 在docker部署nginx
 
+#### 修改配置
+```shell
+
+# 修改 volumes 的路径映射
+vim docker-compose.yml
+
+# 查看虚拟主机的配置
+./etc/nginx/conf.d/
+
+```
+
 #### 部署
 ```shell
-docker run -it --rm \
--v ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf \
--v ./etc/nginx/conf.d/:/etc/nginx/conf.d/ \
--v ./etc/nginx/ssl/:/etc/nginx/ssl/ \
--v ./www/project:/var/www/project \
--p 80:80 \
--p 443:443 \
---name=nginx nginx:1.28.0
-
+#docker run -it --rm \
+#-v ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf \
+#-v ./etc/nginx/conf.d/:/etc/nginx/conf.d/ \
+#-v ./etc/nginx/ssl/:/etc/nginx/ssl/ \
+#-v ./www/project:/var/www/project \
+#-p 80:80 \
+#-p 443:443 \
+#--name=nginx nginx:1.28.0
 
 docker-compose -p service up -d
 
@@ -22,6 +32,7 @@ docker exec -it nginx bash
 ```shell
 curl http://localhost/index.html
 
+# 先配置 hosts
 curl http://project.win.local/index.html
 curl http://project.win.local/phpinfo.php
 

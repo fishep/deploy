@@ -18,6 +18,6 @@
 #### jetbrains 注册的目录
 ```shell
 # 有问题时可以删除
-%APPDATA%\JetBrains\
-%LOCALAPPDATA%\JetBrains\
+~/Library/Application Support/JetBrains/
+~/Library/Caches/JetBrains/
 ```
