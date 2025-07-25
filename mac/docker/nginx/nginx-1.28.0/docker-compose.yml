@@ -16,3 +16,4 @@ services:
       - ~/project/fs/browser:/var/www/browser
       - ~/project/fs/fs-manager:/var/www/fs-manager
       - ~/project/fs/stats.fs.com:/var/www/stats.fs.com
+      - ~/project/github/spring-framework/framework-docs/build/site:/var/www/docs-spring
