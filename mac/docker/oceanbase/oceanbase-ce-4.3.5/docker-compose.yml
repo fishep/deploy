@@ -1,0 +1,10 @@
+services:
+  oceanbase:
+    container_name: oceanbase
+    image: oceanbase/oceanbase-ce:4.3.5-lts
+    environment:
+      MODE: NORMAL
+#      OB_TENANT_PASSWORD: *****
+    ports:
+      - "2881:2881"
+      - "2886:2886"
