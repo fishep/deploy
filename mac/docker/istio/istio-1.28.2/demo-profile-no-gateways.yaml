@@ -1,0 +1,43 @@
+# IOP configuration used to install the demo profile without gateways.
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  profile: demo
+  components:
+    pilot:
+      k8s:
+        overlays:
+        - kind: Deployment
+          name: istiod
+          patches:
+          # 关键：强制给名为 discovery 的容器指定 UID 1337
+          - path: spec.template.spec.containers[name:discovery].securityContext
+            value:
+              runAsUser: 1337
+              runAsGroup: 1337
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+#        podSecurityContext:
+#          runAsUser: 1337
+#          runAsGroup: 1337
+#          fsGroup: 1337
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: false
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: false
+#  values:
+#    global:
+#      proxy:
+#        privileged: true
+#  values:
+#    pilot:
+#      env:
+#        ENABLE_LEGACY_FSGROUP_INJECTION: true
+#  values:
+#    pilot:
+#      podSecurityContext:
+#        runAsUser: 1337
+#        runAsGroup: 1337
+#        fsGroup: 1337
