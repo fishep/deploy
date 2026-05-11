@@ -26,6 +26,9 @@ docker exec -it php bash
 ?XDEBUG_SESSION=PHPSTORM
 
 # cli
+# CLI执行时,没有HTTP Host信息，IDE不知道该用哪个Server, serverName需和IDE里的配置一致
+export PHP_IDE_CONFIG="serverName=https.fs-manager.win.local"
+
 export XDEBUG_TRIGGER=PHPSTORM
 #或
 export XDEBUG_SESSION=PHPSTORM
